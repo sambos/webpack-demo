@@ -63,7 +63,53 @@ open index.html and you should see text "webPack demonstration" in the browser.
 
 
 ### Demo 2
-Now lets try to add some webpack stuff...
+Now lets try to add some webpack stuff... Lets install webpack package using npm :
+```
+npm install webpack --save-dev (--save-dev will save as dev dependency in package.json)
+```
+This will add webpack dependency under package.json and also create node_modules directory - only needed at build time. Now configure webpack by creating a file named 'wepack.config.js': (this will output the contents to bundle.js - which will need to be included in html instead of index.js)
 
+```javascript
+module.exports = {
+  entry: "./index.js",
+  output: {
+    path: ".",
+    filename: "bundle.js"
+  }
+};
+```
+Lets also install the markdown package called 'marked' and use it in our index.js to use markdown styling.
+```
+npm install marked --save
+```
+update index.js to use marked package
+```javascript
+var marked = require("marked");
+var app = document.querySelector("#app");
+app.innerHTML = marked("# WebPack demonstration");
+```
+
+update index.html to point to bundle.js as 
+```
+<script src="bundle.js"></script>
+```
+
+#### Running Demo 2
+To run demo 2, we will also need to instruct to add the build script in package.json. update package.json content as :
+```json
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
 
 

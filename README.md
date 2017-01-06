@@ -78,6 +78,29 @@ module.exports = {
   }
 };
 ```
+
+To run demo 2, we will also need to instruct to add the build script in package.json. update package.json content as :
+```json
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+Now run the command to build the bundle.js which can be included in our index.js file.
+```shell
+npm run build
+```
+
 Lets also install the markdown package called 'marked' and use it in our index.js to use markdown styling.
 ```
 npm install marked --save
@@ -95,21 +118,12 @@ update index.html to point to bundle.js as
 ```
 
 #### Running Demo 2
-To run demo 2, we will also need to instruct to add the build script in package.json. update package.json content as :
-```json
-{
-  "name": "webpack-demo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-```
+open the browser to point to index.html and you will see the results !!
+
+
+### Demo 3
+Now lets try to run the same example with webpack dev server where all the changes will automatically be built and published for us - whenever any file is updated !!
+
+
 
 

@@ -11,19 +11,21 @@ Demonstrates building web app using webpack.
 Install npm and nodejs and any editor. For this demo we will use Atom editor. npm will come installed along with nodejs, so just download latest version of [node.js](https://docs.npmjs.com/getting-started/installing-node)
 
 Verify installation - check if you can run the commands:
-```
+```sh
 npm -v
 node -v
 
 ```
 
 Create a directory webpack-demo under your working directory.
-```
+```sh
 mkdir webpack-demo
 cd webpack-demo
 npm init --yes
 ```
 The npm init command will create a package.json under webpack-demo directory. Open Atom and add project directory. You will see the content of the package.json as 
+
+***package.json***
 ```json
 {
   "name": "webpack-demo",
@@ -44,6 +46,7 @@ The npm init command will create a package.json under webpack-demo directory. Op
 Lets create a very simple web page that will add some text to div tag though javascript. You may skip and go to Demo 2 if you get bored!.
 
 #### create simple index.html and index.js 
+*index.html*
 ```html
 <!DOCTYPE html>
 <html>
@@ -57,6 +60,8 @@ Lets create a very simple web page that will add some text to div tag though jav
 </body>
 </html>
 ```
+
+*index.js*
 ```javascript
 var app = document.querySelector("#app");
 app.innerHTML = "WebPack demonstration";
@@ -74,6 +79,7 @@ npm install webpack --save-dev (--save-dev will save as dev dependency in packag
 ```
 This will add webpack dependency under package.json and also create node_modules directory - only needed at build time. Now configure webpack by creating a file named 'wepack.config.js': (this will output the contents to bundle.js - which will need to be included in html instead of index.js)
 
+*webpack.config.js*
 ```javascript
 module.exports = {
   entry: "./index.js",
@@ -85,6 +91,8 @@ module.exports = {
 ```
 
 To run demo 2, we will also need to instruct to add the build script in package.json. update package.json content as :
+
+*package.json*
 ```json
 {
   "name": "webpack-demo",
@@ -111,6 +119,8 @@ Lets also install the markdown package called 'marked' and use it in our index.j
 npm install marked --save
 ```
 update index.js to use marked package
+
+*index.js*
 ```javascript
 var marked = require("marked");
 var app = document.querySelector("#app");
@@ -118,6 +128,7 @@ app.innerHTML = marked("# WebPack demonstration");
 ```
 
 update index.html to point to bundle.js as 
+
 ```
 <script src="bundle.js"></script>
 ```

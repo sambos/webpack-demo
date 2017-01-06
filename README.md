@@ -1,5 +1,10 @@
 # webpack-demo
-Demonstrates building web app using webpack.
+Demonstrates building web app using webpack.   
+* Demo 1
+* Demo 2
+* Demo 3 - weith webpack-dev-server
+
+
 
 ## Setup
 ### Installation

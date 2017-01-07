@@ -138,7 +138,7 @@ open the browser to point to index.html and you will see the results !!
 
 
 ### Demo 3
-Now lets try to run the same example with webpack dev server where all the changes will automatically be built and published for us - whenever any file is updated !! - we will reuse the files created in the Demo 2.
+Now lets try to run the same example with webpack dev server where all the changes made to .css will automatically be built and published for us - whenever any file is updated !! - we will reuse the files created in the Demo 2.
 
 Lets add style.css file and add it to index.js
 

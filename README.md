@@ -7,7 +7,7 @@ Demonstrates building web app using webpack.
 
 
 ## Setup
-### Installation
+## Installation
 Install npm and nodejs and any editor. For this demo we will use Atom editor. npm will come installed along with nodejs, so just download latest version of [node.js](https://docs.npmjs.com/getting-started/installing-node)
 
 Verify installation - check if you can run the commands:
@@ -138,8 +138,89 @@ open the browser to point to index.html and you will see the results !!
 
 
 ### Demo 3
-Now lets try to run the same example with webpack dev server where all the changes will automatically be built and published for us - whenever any file is updated !!
+Now lets try to run the same example with webpack dev server where all the changes will automatically be built and published for us - whenever any file is updated !! - we will reuse the files created in the Demo 2.
 
+Lets add style.css file and add it to index.js
 
+*index.html*
+same as above in Demo 2
+
+*index.js*
+```javascript
+var marked = require("marked");
+require("./style.css");
+var app = document.querySelector("#app");
+app.innerHTML = marked("# WebPack demonstration");
+
+```
+-- notice that, you dont have to include css in html file, require will automatically make that as dependency.
+
+*style.css*
+```css
+body{
+  color: #DDBBCC;
+}
+
+```
+
+Now lets see how this style changes will automatically apply. First install webpack-dev-server module
+```sh
+npm install webpack-dev-server --save-dev
+```
+
+Install css module loaders. lets create a new webpack.config-dev.js file which will import webpack.config.js as well. You can chagne the port to any open port that you like. __dirname is the short form of current directory.
+
+config.devtool = "eval" implies => 
+
+*webpack.config-dev.js*
+```javascript
+var config = require("./webpack.config.js");
+
+config.devServer = {
+  port: 3050,
+  contentBase: __dirname,
+  inline: true
+};
+config.output.publicPath = "/";
+config.devtool = "eval";
+
+module.exports = config;
+```
+
+update webpack.config.js to include css loaders 
+
+*webpack.config.js*
+```javascript
+module.exports = {
+  entry: "./index.js",
+  output: {
+    path: ".",
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [{
+      test: /\.css$/,
+      loader: "style!css"
+    }]
+  }
+};
+```
+
+Now install style-loader and css-loader modules which will install required packages.
+
+```sh
+npm install style-loader css-loader --save-dev
+```
+
+#### Running Demo 3
+
+run the following command
+
+```sh
+npm run start-dev
+```
+
+open the browser to point to http://localhost:3050   
+Now any changes that you make to css will automatically be updated.
 
 
